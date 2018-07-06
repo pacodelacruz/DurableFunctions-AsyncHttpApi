@@ -14,6 +14,9 @@ namespace PacodelaCruz.DurableFunctions.AsyncHttpApi
     public static class Select
     {
 
+        /// <summary>
+        /// Dummy Durable Activity Function to simulate a manual final selection step.
+        /// </summary>
         [FunctionName("Select")]
         public static bool RunActivity(
                                 [ActivityTrigger] Presentation presentationDetails,

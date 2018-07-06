@@ -11,6 +11,14 @@ namespace PacodelaCruz.DurableFunctions.AsyncHttpApi
 {
     public static class ProcessSubmission
     {
+        /// <summary>
+        /// Durable Functions Orchestration
+        /// Receives a Call-for-Speaker submissions and control the approval workflow. 
+        /// Updates the Orchestration Instance Custom Status as it progresses. 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="logger"></param>
+        /// <returns></returns>
         [FunctionName("ProcessSubmission")]
         public static async Task<bool> RunOrchestrator(
                                     [OrchestrationTrigger] DurableOrchestrationContext context,

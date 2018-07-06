@@ -11,6 +11,9 @@ using PacodelaCruz.DurableFunctions.AsyncHttpApi.Models;
 
 namespace PacodelaCruz.DurableFunctions.AsyncHttpApi
 {
+    /// <summary>
+    /// Dummy Durable Activity Function to simulate a manual shortlisting step.
+    /// </summary>
     public static class Shortlist
     {
 

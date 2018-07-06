@@ -11,6 +11,16 @@ namespace PacodelaCruz.DurableFunctions.AsyncHttpApi
 {
     public static class GetStatus
     {
+        /// <summary>
+        /// Http Triggered Function which acts as a wrapper to get the status of a running Durable orchestration instance.
+        /// It enriches the response based on the GetStatusAsync's retruned value
+        /// I'm using Anonymous Aurhotisation Level for demonstration purposes. You should use a more secure approach. 
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="orchestrationClient"></param>
+        /// <param name="instanceId"></param>
+        /// <param name="logger"></param>
+        /// <returns></returns>
         [FunctionName("GetStatus")]
         public static async Task<IActionResult> Run(
                                                     [HttpTrigger(AuthorizationLevel.Anonymous, methods: "get", Route = "status/{instanceId}")] HttpRequest req,

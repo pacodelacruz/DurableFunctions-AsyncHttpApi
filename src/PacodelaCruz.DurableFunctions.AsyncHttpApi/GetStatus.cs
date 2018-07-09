@@ -26,9 +26,12 @@ namespace PacodelaCruz.DurableFunctions.AsyncHttpApi
                                                     string instanceId,
                                                     ILogger logger)
         {
+            // Get the built-in status of the orchestration instance. This status is managed by the Durable Functions Extension. 
             var status = await orchestrationClient.GetStatusAsync(instanceId);
             if (status != null)
             {
+                // Get the custom status of the orchestration intance. This status is set by our code. 
+                // This can be any serialisable object. In this case, just a string. 
                 string customStatus = (string)status.CustomStatus;
                 if (status.RuntimeStatus == OrchestrationRuntimeStatus.Running || status.RuntimeStatus == OrchestrationRuntimeStatus.Pending)
                 {

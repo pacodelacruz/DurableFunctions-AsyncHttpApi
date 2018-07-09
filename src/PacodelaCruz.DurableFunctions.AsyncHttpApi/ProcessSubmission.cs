@@ -29,13 +29,15 @@ namespace PacodelaCruz.DurableFunctions.AsyncHttpApi
             bool approved;
 
             stage = "Moderation";
+            // Set the custom status for the ochestration instance. 
+            // This can be any serialisable object. In this case it is just a string. 
             context.SetCustomStatus(stage);
             approved = await context.CallActivityAsync<bool>("Moderate", presentation);
 
             if (approved)
             {
                 stage = "Shortlisting";
-                context.SetCustomStatus("Shortlisting");
+                context.SetCustomStatus(stage);
                 approved = await context.CallActivityAsync<bool>("Shortlist", presentation);
 
                 if (approved)

@@ -43,8 +43,9 @@ namespace PacodelaCruz.DurableFunctions.AsyncHttpApi
             string checkStatusLocacion = string.Format("{0}://{1}/api/status/{2}", req.Scheme, req.Host, instanceId); // To inform the client where to check the status
             string message = $"Your submission has been received. To get the status, go to: {checkStatusLocacion}"; 
 
+            // Create an Http Response with Status Accepted (202) to let the client know that the request has been accepted but not yet processed. 
             ActionResult response = new AcceptedResult(checkStatusLocacion, message); // The GET status location is returned as an http header
-            req.HttpContext.Response.Headers.Add("retry-after", "20"); // To inform the client how long to wait before checking the status
+            req.HttpContext.Response.Headers.Add("retry-after", "20"); // To inform the client how long to wait in seconds before checking the status
 
             return response;
         }
